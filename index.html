@@ -19,174 +19,107 @@
       :root{ --bg:#f8fafc; --text:#0f172a; --muted:#475569; --card:#ffffff; --accent:#0ea5e9; --border:#e5e7eb; }
     }
     html,body{margin:0;height:100%;font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; background:var(--bg); color:var(--text);}
-    .container{max-width:1000px;margin:0 auto;padding:24px;}
-    .nav{display:flex;gap:16px;align-items:center;justify-content:flex-end;position:sticky;top:0;background:color-mix(in oklab, var(--bg) 90%, transparent);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--border);padding:12px 24px;z-index:10}
+    .container{max-width:1100px;margin:0 auto;padding:24px;}
+    .nav{display:flex;gap:16px;align-items:center;justify-content:space-between;position:sticky;top:0;background:color-mix(in oklab, var(--bg) 90%, transparent);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--border);padding:12px 24px;z-index:10}
     .nav a{color:var(--text);text-decoration:none;opacity:.9}
     .nav a:hover{opacity:1}
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:48px 24px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow: 0 10px 24px rgb(0 0 0 / .25)}
-    .kicker{letter-spacing:.12em;color:var(--accent);font-weight:600;text-transform:uppercase;font-size:.8rem;margin-bottom:.25rem}
-    h1{font-size:clamp(1.8rem,3.5vw,2.6rem);margin:0 0 .5rem 0}
+    header.hero{position:relative;text-align:center;color:white;min-height:80vh;display:flex;align-items:center;justify-content:center}
+    header.hero::before{content:'';position:absolute;inset:0;background:url('/assets/hero-bg.jpg') center/cover no-repeat;filter:brightness(.4);z-index:-1}
+    .hero-content{max-width:700px;padding:40px;background:rgb(0 0 0 / .5);border-radius:18px}
+    h1{font-size:clamp(2rem,4vw,3rem);margin:0 0 .5rem 0}
+    h2{font-size:1.6rem;margin:1.5rem 0 .6rem 0}
     p{line-height:1.6}
-    .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid var(--border);background:linear-gradient(180deg, color-mix(in oklab, var(--card) 90%, #0000), var(--card));color:var(--text);text-decoration:none}
+    .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;justify-content:center}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid var(--border);background:linear-gradient(180deg, color-mix(in oklab, var(--card) 90%, #0000), var(--card));color:var(--text);text-decoration:none}
     .btn.primary{border-color:color-mix(in oklab, var(--accent) 60%, var(--border));box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--accent) 40%, #0000)}
-    .grid{display:grid;gap:18px}
-    .grid.cols-3{grid-template-columns:repeat(3, 1fr)}
+    .grid{display:grid;gap:20px}
     .grid.cols-2{grid-template-columns:repeat(2, 1fr)}
-    @media(max-width:900px){.hero{grid-template-columns:1fr}.grid.cols-3{grid-template-columns:1fr}}
-    @media(max-width:700px){.grid.cols-2{grid-template-columns:1fr}}
+    .grid.cols-3{grid-template-columns:repeat(3, 1fr)}
+    @media(max-width:900px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow:0 8px 18px rgb(0 0 0 / .25)}
     .tag{font-size:.75rem;color:var(--muted);border:1px solid var(--border);border-radius:999px;padding:4px 8px}
-    .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
     .proj h3{margin:.25rem 0}
     .muted{color:var(--muted)}
     .footer{padding:36px 0;color:var(--muted);text-align:center}
-    .section{padding:18px 24px}
-    .section h2{font-size:1.4rem;margin:0 0 .6rem 0}
-    .pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--border);border-radius:999px}
     .timeline{position:relative}
     .timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--border)}
     .tl-item{position:relative;padding-left:32px;margin:16px 0}
     .tl-item::before{content:'';position:absolute;left:4px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--accent)}
-    .code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:var(--card);padding:2px 6px;border-radius:6px;border:1px solid var(--border)}
-    a{color:var(--accent)}
+    .profile-img{width:180px;height:180px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);margin:auto;display:block}
   </style>
-  <script>
-    // Smooth scroll for internal links
-    addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
-        const id = a.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
-      }));
-    });
-  </script>
 </head>
 <body>
-  <nav class="nav">
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:16px">
-      <a href="#top" style="font-weight:700;letter-spacing:.02em">Ahmad Shamail</a>
-      <div class="row">
-        <a href="#projects">Projects</a>
-        <a href="#research">Research</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-        <a href="./Ahmad_Shamail_Resume.pdf" class="btn" title="Resume PDF">Resume</a>
-      </div>
+  <nav class="nav container">
+    <a href="#top" style="font-weight:700;letter-spacing:.02em">Ahmad Shamail</a>
+    <div class="row">
+      <a href="#about">Who I Am</a>
+      <a href="#research">Research & Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="./Ahmad_Shamail_Resume.pdf" class="btn">Resume</a>
     </div>
   </nav>
 
-  <header id="top" class="hero container">
-    <div class="card">
-      <div class="kicker">AI/ML • Bioinformatics • Full‑stack</div>
-      <h1>Building practical AI systems that save time and unlock insight.</h1>
-      <p>
-        I'm <strong>Ahmad Shamail</strong>, an MS CS candidate at UArizona and AI engineer at StruxHub. I design agentic workflows (LangGraph/LangChain), ship FastAPI backends and React frontends, and work on research like feature‑interaction metrics (L‑score) and reproducible intrusion‑detection pipelines.
-      </p>
+  <header id="top" class="hero">
+    <div class="hero-content">
+      <img src="/assets/profile.jpg" alt="Profile Picture" class="profile-img" />
+      <h1>Hi, I’m Ahmad Shamail</h1>
+      <p>MS Computer Science @ University of Arizona | AI Engineer | Researcher in Protein LLMs & Security</p>
       <div class="btns">
-        <a class="btn primary" href="#projects">See projects</a>
-        <a class="btn" href="mailto:ahmad@example.com">Email me</a>
-        <a class="btn" href="https://github.com/ahmad" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="https://www.linkedin.com/in/ahmad" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </div>
-    <div class="card">
-      <h2 style="margin-top:0">At a glance</h2>
-      <div class="grid cols-2">
-        <div>
-          <div class="kicker">Core stack</div>
-          <div class="row" style="gap:8px;margin-top:6px">
-            <span class="pill">FastAPI</span>
-            <span class="pill">React</span>
-            <span class="pill">MongoDB</span>
-            <span class="pill">Postgres + pgvector</span>
-            <span class="pill">LangGraph</span>
-            <span class="pill">LangChain</span>
-          </div>
-        </div>
-        <div>
-          <div class="kicker">Focus areas</div>
-          <ul>
-            <li>AI agents for construction workflows</li>
-            <li>RAG over Notion docs + forms</li>
-            <li>Protein/feature‑interaction research</li>
-          </ul>
-        </div>
+        <a class="btn primary" href="#about">Explore my work</a>
+        <a class="btn" href="mailto:shamail@arizona.edu">Email</a>
+        <a class="btn" href="https://github.com/A-Shamail" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/ahmad-shamail/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </header>
 
+  <section id="about" class="container section">
+    <div class="grid cols-2">
+      <div class="card">
+        <h2>Who I Am</h2>
+        <p>Master of Science in Computer Science (2024–2026) at the University of Arizona with a 4.0 GPA. Previously earned my BS in Computer Science from LUMS (3.89 GPA). Awards include Dean’s Honor List, Merit Scholarship, and NMF Gold Medal for Sportsperson of the Year.</p>
+      </div>
+      <div class="card">
+        <h2>Research Interests & Work</h2>
+        <p>AI agents, feature interaction metrics, protein-specific LLMs, and reproducibility in security systems. Published at ACM-REP 2025.</p>
+        <p><a href="https://www.csl.sri.com/users/gehani/papers/REP-2025.PIDDL.pdf" target="_blank">View Paper</a></p>
+      </div>
+    </div>
+  </section>
+
   <section id="projects" class="container section">
-    <h2>Featured projects</h2>
+    <h2>Personal Projects</h2>
     <div class="grid cols-3">
       <article class="card proj">
-        <div class="row"><span class="tag">Agentic</span><span class="tag">LangGraph</span></div>
+        <div class="row"><span class="tag">Game Dev</span></div>
+        <h3>Turn-Based Pokemon Game</h3>
+        <p>A 2D Unity game with custom UI and audio, set in my undergraduate campus. Built with C# scripts.</p>
+        <p><a href="https://github.com/A-Shamail/Pokemon-Game" target="_blank">GitHub</a></p>
+      </article>
+      <article class="card proj">
+        <div class="row"><span class="tag">Mobile App</span></div>
+        <h3>Student Budgeting Application</h3>
+        <p>React Native budgeting app with expense tracking, visualization, and cost-saving recommendations.</p>
+        <p><a href="https://github.com/A-Shamail/Hisaab-Budgeting" target="_blank">GitHub</a></p>
+      </article>
+      <article class="card proj">
+        <div class="row"><span class="tag">AI / ML</span></div>
         <h3>Form Recreation Agent</h3>
-        <p>Agent that returns matching StruxHub form IDs from natural language, with a FastAPI service and React UI. Cuts permit creation time by <strong>5–10 hours/week</strong>.</p>
-        <p class="muted"><span class="code">Python</span> <span class="code">FastAPI</span> <span class="code">MongoDB</span></p>
-        <p><a href="#" target="_blank" rel="noopener">GitHub</a> · <a href="#" target="_blank" rel="noopener">Demo</a></p>
+        <p>AI-driven agent using LangGraph + FastAPI to recreate construction forms. Saved 5–10 hours weekly.</p>
+        <p><a href="#" target="_blank">Demo</a></p>
       </article>
-      <article class="card proj">
-        <div class="row"><span class="tag">RAG</span><span class="tag">PDF/Images</span></div>
-        <h3>Form Digitization System</h3>
-        <p>Backend that converts scanned forms/PDFs into StruxHub‑ready JSON with testing scripts and a demo UI. Plug‑and‑play for teams.</p>
-        <p class="muted"><span class="code">Python</span> <span class="code">FastAPI</span> <span class="code">Gemini</span></p>
-        <p><a href="#" target="_blank" rel="noopener">GitHub</a> · <a href="#" target="_blank" rel="noopener">Demo</a></p>
-      </article>
-      <article class="card proj">
-        <div class="row"><span class="tag">Sales Intel</span><span class="tag">Automation</span></div>
-        <h3>Sales Research Automation</h3>
-        <p>Pipeline using Perplexity + Gemini to validate and enrich construction‑project data; improves lead quality and discovery.</p>
-        <p class="muted"><span class="code">Python</span> <span class="code">Airflow (opt)</span> <span class="code">Notion</span></p>
-        <p><a href="#" target="_blank" rel="noopener">GitHub</a></p>
-      </article>
-    </div>
-  </section>
-
-  <section id="research" class="container section">
-    <h2>Research</h2>
-    <div class="card">
-      <div class="timeline">
-        <div class="tl-item">
-          <strong>Iterative Random Feature Additions</strong> — exploring redundancy → dependency transitions via performance deltas during random additions. <span class="muted">Manuscript in progress.</span>
-        </div>
-        <div class="tl-item">
-          <strong>PIDDL Reproducibility</strong> — provenance‑based intrusion detection pipelines with reproducible evaluations. <span class="muted">Study notes & code.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="experience" class="container section">
-    <h2>Experience</h2>
-    <div class="card">
-      <div class="grid cols-2">
-        <div>
-          <h3 style="margin-top:0">StruxHub — AI Intern</h3>
-          <p class="muted">2025 • US</p>
-          <ul>
-            <li>Built agentic workflows for form creation/recreation; integrated with MongoDB and GraphQL.</li>
-            <li>Digitized paper forms into platform‑ready JSON; test harness + frontend demo.</li>
-            <li>Automated sales research and reporting; improved throughput and accuracy.</li>
-          </ul>
-        </div>
-        <div>
-          <h3 style="margin-top:0">UArizona — Graduate Researcher</h3>
-          <p class="muted">2024–2026</p>
-          <ul>
-            <li>Feature‑interaction metrics (L‑score) and symbolic‑regression tooling.</li>
-            <li>Reproducible ML pipelines; open datasets and code artifacts.</li>
-          </ul>
-        </div>
-      </div>
     </div>
   </section>
 
   <section id="contact" class="container section">
     <h2>Contact</h2>
     <div class="card">
-      <p>Email: <a href="mailto:ahmad@example.com">ahmad@example.com</a> · GitHub: <a href="https://github.com/ahmad" target="_blank" rel="noopener">ahmad</a> · LinkedIn: <a href="https://www.linkedin.com/in/ahmad" target="_blank" rel="noopener">/in/ahmad</a></p>
-      <p class="muted">Optional: wire a contact form to Formspree or a Cloud Function; replace placeholders above.</p>
+      <p>Email: <a href="mailto:shamail@arizona.edu">shamail@arizona.edu</a></p>
+      <p>Phone: (520)-609-1202</p>
+      <p>GitHub: <a href="https://github.com/A-Shamail" target="_blank">A-Shamail</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/ahmad-shamail/" target="_blank">ahmad-shamail</a></p>
+      <p><a href="./Ahmad_Shamail_Resume.pdf">Download Resume (PDF)</a></p>
     </div>
   </section>
 
