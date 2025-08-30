@@ -21,8 +21,8 @@
     .nav a{color:var(--text);text-decoration:none;opacity:.9;transition:all 0.2s ease;padding:8px 16px;border-radius:20px;background:transparent;border:1px solid transparent}
     .nav a:hover{opacity:1;background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2)}
     .nav .row{display:flex;gap:16px;align-items:center}
-    .nav .btn{background:#ffffff;color:#000000;border:2px solid #ffffff;padding:8px 16px;font-size:0.9rem}
-    .nav .btn:hover{background:#f0f0f0;transform:none}
+    .nav .btn{background:#60a5fa;color:#ffffff;border:2px solid #60a5fa;padding:8px 16px;font-size:0.9rem}
+    .nav .btn:hover{background:#3b82f6;border-color:#3b82f6;transform:none}
     header.hero{position:relative;text-align:center;color:white;min-height:80vh;display:flex;align-items:center;justify-content:center}
     header.hero::before{content:'';position:absolute;inset:0;background:url('/assets/hero-bg.jpg') center/cover no-repeat;filter:brightness(.4);z-index:-1}
     .hero-content{max-width:700px;padding:40px;background:rgba(0,0,0,0.8);border-radius:18px;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1)}
@@ -30,8 +30,8 @@
     h2{font-size:1.6rem;margin:1.5rem 0 .6rem 0}
     p{line-height:1.6}
     .btns{display:flex;gap:16px;flex-wrap:wrap;margin-top:24px;justify-content:center;align-items:center}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;border:2px solid #ffffff;background:#ffffff;color:#000000;text-decoration:none;font-weight:600;transition:all 0.2s ease;box-shadow:0 2px 8px rgba(255,255,255,0.1)}
-    .btn:hover{background:#f0f0f0;transform:translateY(-1px);box-shadow:0 4px 12px rgba(255,255,255,0.2)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;border:2px solid #60a5fa;background:#60a5fa;color:#ffffff;text-decoration:none;font-weight:600;transition:all 0.2s ease;box-shadow:0 2px 8px rgba(96,165,250,0.2)}
+    .btn:hover{background:#3b82f6;border-color:#3b82f6;transform:translateY(-1px);box-shadow:0 4px 12px rgba(96,165,250,0.3)}
     .btn.primary{background:#0ea5e9;color:#ffffff;border-color:#0ea5e9}
     .btn.primary:hover{background:#0284c7;border-color:#0284c7}
     .grid{display:grid;gap:20px}
@@ -94,6 +94,18 @@
   <section id="projects" class="container section">
     <h2>Personal Projects</h2>
     <div class="grid cols-3">
+      <article class="card proj">
+        <div class="row"><span class="tag">AI Agent</span></div>
+        <h3>AI Agent Project 1</h3>
+        <p>Advanced AI agent system with intelligent decision-making capabilities. Details coming soon.</p>
+        <p><a href="#" target="_blank">Coming Soon</a></p>
+      </article>
+      <article class="card proj">
+        <div class="row"><span class="tag">AI Agent</span></div>
+        <h3>AI Agent Project 2</h3>
+        <p>Sophisticated multi-modal AI agent for complex task automation. Details coming soon.</p>
+        <p><a href="#" target="_blank">Coming Soon</a></p>
+      </article>
       <article class="card proj">
         <div class="row"><span class="tag">Game Dev</span></div>
         <h3>Turn-Based Pokemon Game</h3>
