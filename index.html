@@ -40,6 +40,7 @@
     .grid.cols-2-large{grid-template-columns:repeat(2, 1fr);gap:32px}
     .grid.cols-1{grid-template-columns:1fr}
     .agent-card{padding:32px;min-height:200px}
+    .project-media{width:100%;border-radius:8px;margin-bottom:16px;border:1px solid var(--border);max-height:250px;object-fit:cover}
     @media(max-width:900px){.grid.cols-2-large,.grid.cols-2{grid-template-columns:1fr}}
     @media(max-width:900px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}}
     .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow:0 8px 24px rgba(0,0,0,0.4);transition:all 0.2s ease}
@@ -102,12 +103,14 @@
     <div class="grid cols-2-large" style="margin-bottom: 32px;">
       <article class="card proj agent-card">
         <div class="row"><span class="tag">AI Agent</span></div>
+        <img src="/assets/gifs/agent-1-placeholder.gif" alt="AI Agent 1 Demo" class="project-media">
         <h3>AI Agent Project 1</h3>
         <p>Advanced AI agent system with intelligent decision-making capabilities. Details coming soon.</p>
         <p><a href="#" target="_blank">Coming Soon</a></p>
       </article>
       <article class="card proj agent-card">
         <div class="row"><span class="tag">AI Agent</span></div>
+        <img src="/assets/gifs/agent-2-placeholder.gif" alt="AI Agent 2 Demo" class="project-media">
         <h3>AI Agent Project 2</h3>
         <p>Sophisticated multi-modal AI agent for complex task automation. Details coming soon.</p>
         <p><a href="#" target="_blank">Coming Soon</a></p>
@@ -117,8 +120,8 @@
     <div class="grid cols-1" style="margin-bottom: 32px;">
       <article class="card proj agent-card">
         <div class="row"><span class="tag">Research</span></div>
-        <h3>Master's Thesis: Protein-Specific Large Language Models</h3>
-        <p>Developing novel transformer architectures optimized for protein sequence understanding and functional prediction. Investigating attention mechanisms for capturing long-range dependencies in amino acid sequences, with applications in drug discovery and protein engineering. Implementing custom tokenization strategies and pre-training objectives for biological sequence data.</p>
+        <h3>Master's Thesis: Neural Network Explainability in Protein Analysis</h3>
+        <p>Investigating explainability methods in neural networks to identify knowledge neurons and extract meaningful relationships among protein sequence inputs. Testing baseline explainability approaches using traditional features, then extrapolating to neuronal-level analysis to predict and explain protein mutations and structural conformations. Developing novel techniques to bridge the gap between network interpretability and biological understanding in protein language models.</p>
         <p><a href="#" target="_blank">Research in Progress</a></p>
       </article>
     </div>
@@ -126,6 +129,7 @@
     <div class="grid cols-2">
       <article class="card proj">
         <div class="row"><span class="tag">Game Dev</span></div>
+        <img src="/assets/pokemon.png" alt="Pokemon Game Screenshot" class="project-media">
         <h3>Turn-Based Pokemon Game</h3>
         <p>A 2D Unity game with custom UI and audio, set in my undergraduate campus. Built with C# scripts.</p>
         <p><a href="https://github.com/A-Shamail/Pokemon-Game" target="_blank">GitHub</a></p>
