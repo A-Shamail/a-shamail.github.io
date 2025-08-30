@@ -13,11 +13,11 @@
   <link rel="icon" href="/assets/favicon.ico" />
   <style>
     :root{
-      --bg:#0f0f0f; --text:#ffffff; --muted:#b0b0b0; --card:#1a1a1a; --accent:#0ea5e9; --border:#333333;
+      --bg:#1a1a1a; --text:#ffffff; --muted:#c0c0c0; --card:#2a2a2a; --accent:#0ea5e9; --border:#404040;
     }
     html,body{margin:0;height:100%;font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; background:var(--bg); color:var(--text);}
     .container{max-width:1100px;margin:0 auto;padding:24px;}
-    .nav{display:flex;gap:24px;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(15,15,15,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:16px 24px;z-index:10}
+    .nav{display:flex;gap:24px;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(26,26,26,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:16px 24px;z-index:10}
     .nav a{color:var(--text);text-decoration:none;opacity:.9;transition:all 0.2s ease;padding:8px 16px;border-radius:20px;background:transparent;border:1px solid transparent}
     .nav a:hover{opacity:1;background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2)}
     .nav .row{display:flex;gap:16px;align-items:center}
@@ -37,9 +37,14 @@
     .grid{display:grid;gap:20px}
     .grid.cols-2{grid-template-columns:repeat(2, 1fr)}
     .grid.cols-3{grid-template-columns:repeat(3, 1fr)}
+    .grid.cols-2-large{grid-template-columns:repeat(2, 1fr);gap:32px}
+    .agent-card{padding:32px;min-height:200px}
+    @media(max-width:900px){.grid.cols-2-large{grid-template-columns:1fr}}
     @media(max-width:900px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}}
     .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow:0 8px 24px rgba(0,0,0,0.4);transition:all 0.2s ease}
-    .card:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,0.6);border-color:#555555}
+    .card:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,0.6);border-color:#666666}
+    .card a{color:#60a5fa;text-decoration:none;transition:color 0.2s ease}
+    .card a:hover{color:#3b82f6}
     .tag{font-size:.75rem;color:var(--muted);border:1px solid var(--border);border-radius:999px;padding:4px 8px}
     .proj h3{margin:.25rem 0}
     .muted{color:var(--muted)}
@@ -93,19 +98,23 @@
 
   <section id="projects" class="container section">
     <h2>Personal Projects</h2>
-    <div class="grid cols-3">
-      <article class="card proj">
+    <!-- AI Agent Projects Row -->
+    <div class="grid cols-2-large" style="margin-bottom: 32px;">
+      <article class="card proj agent-card">
         <div class="row"><span class="tag">AI Agent</span></div>
         <h3>AI Agent Project 1</h3>
         <p>Advanced AI agent system with intelligent decision-making capabilities. Details coming soon.</p>
         <p><a href="#" target="_blank">Coming Soon</a></p>
       </article>
-      <article class="card proj">
+      <article class="card proj agent-card">
         <div class="row"><span class="tag">AI Agent</span></div>
         <h3>AI Agent Project 2</h3>
         <p>Sophisticated multi-modal AI agent for complex task automation. Details coming soon.</p>
         <p><a href="#" target="_blank">Coming Soon</a></p>
       </article>
+    </div>
+    <!-- Other Projects Row -->
+    <div class="grid cols-3">
       <article class="card proj">
         <div class="row"><span class="tag">Game Dev</span></div>
         <h3>Turn-Based Pokemon Game</h3>
