@@ -38,8 +38,9 @@
     .grid.cols-2{grid-template-columns:repeat(2, 1fr)}
     .grid.cols-3{grid-template-columns:repeat(3, 1fr)}
     .grid.cols-2-large{grid-template-columns:repeat(2, 1fr);gap:32px}
+    .grid.cols-1{grid-template-columns:1fr}
     .agent-card{padding:32px;min-height:200px}
-    @media(max-width:900px){.grid.cols-2-large{grid-template-columns:1fr}}
+    @media(max-width:900px){.grid.cols-2-large,.grid.cols-2{grid-template-columns:1fr}}
     @media(max-width:900px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}}
     .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow:0 8px 24px rgba(0,0,0,0.4);transition:all 0.2s ease}
     .card:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,0.6);border-color:#666666}
@@ -71,7 +72,7 @@
   <header id="top" class="hero">
     <div class="hero-content">
       <img src="/assets/profile.jpg" alt="Profile Picture" class="profile-img" />
-      <h1>Hi, I’m Ahmad Shamail</h1>
+      <h1>Hi, I'm Ahmad Shamail</h1>
       <p>MS Computer Science @ University of Arizona | AI Engineer | Researcher in Protein LLMs & Security</p>
       <div class="btns">
         <a class="btn" href="mailto:shamail@arizona.edu">Email</a>
@@ -85,18 +86,18 @@
     <div class="grid cols-2">
       <div class="card">
         <h2>Who I Am</h2>
-        <p>Master of Science in Computer Science (2024–2026) at the University of Arizona with a 4.0 GPA. Previously earned my BS in Computer Science from LUMS (3.89 GPA). Awards include Dean’s Honor List, Merit Scholarship, and NMF Gold Medal for Sportsperson of the Year.</p>
+        <p>Master of Science in Computer Science (2024–2026) at the University of Arizona with a 4.0 GPA. Previously earned my BS in Computer Science from LUMS (3.89 GPA). Awards include Dean's Honor List, Merit Scholarship, and NMF Gold Medal for Sportsperson of the Year.</p>
       </div>
       <div class="card">
         <h2>Research Interests & Work</h2>
-        <p>AI agents, feature interaction metrics, protein-specific LLMs, and reproducibility in security systems. Published at ACM-REP 2025.</p>
+        <p>Specializing in multi-agent AI systems, deep learning architectures for protein sequence modeling, and ML interpretability through feature interaction analysis. Current research focuses on large language models for biological sequences, reinforcement learning for autonomous agents, and reproducibility frameworks in ML security systems. Published at ACM-REP 2025.</p>
         <p><a href="https://www.csl.sri.com/users/gehani/papers/REP-2025.PIDDL.pdf" target="_blank">View Paper</a></p>
       </div>
     </div>
   </section>
 
   <section id="projects" class="container section">
-    <h2>Personal Projects</h2>
+    <h2>Projects and Research</h2>
     <!-- AI Agent Projects Row -->
     <div class="grid cols-2-large" style="margin-bottom: 32px;">
       <article class="card proj agent-card">
@@ -112,8 +113,17 @@
         <p><a href="#" target="_blank">Coming Soon</a></p>
       </article>
     </div>
+    <!-- Master's Thesis Row -->
+    <div class="grid cols-1" style="margin-bottom: 32px;">
+      <article class="card proj agent-card">
+        <div class="row"><span class="tag">Research</span></div>
+        <h3>Master's Thesis: Protein-Specific Large Language Models</h3>
+        <p>Developing novel transformer architectures optimized for protein sequence understanding and functional prediction. Investigating attention mechanisms for capturing long-range dependencies in amino acid sequences, with applications in drug discovery and protein engineering. Implementing custom tokenization strategies and pre-training objectives for biological sequence data.</p>
+        <p><a href="#" target="_blank">Research in Progress</a></p>
+      </article>
+    </div>
     <!-- Other Projects Row -->
-    <div class="grid cols-3">
+    <div class="grid cols-2">
       <article class="card proj">
         <div class="row"><span class="tag">Game Dev</span></div>
         <h3>Turn-Based Pokemon Game</h3>
@@ -125,12 +135,6 @@
         <h3>Student Budgeting Application</h3>
         <p>React Native budgeting app with expense tracking, visualization, and cost-saving recommendations.</p>
         <p><a href="https://github.com/A-Shamail/Hisaab-Budgeting" target="_blank">GitHub</a></p>
-      </article>
-      <article class="card proj">
-        <div class="row"><span class="tag">AI / ML</span></div>
-        <h3>Form Recreation Agent</h3>
-        <p>AI-driven agent using LangGraph + FastAPI to recreate construction forms. Saved 5–10 hours weekly.</p>
-        <p><a href="#" target="_blank">Demo</a></p>
       </article>
     </div>
   </section>
