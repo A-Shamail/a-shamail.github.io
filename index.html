@@ -40,7 +40,13 @@
     .grid.cols-2-large{grid-template-columns:repeat(2, 1fr);gap:32px}
     .grid.cols-1{grid-template-columns:1fr}
     .agent-card{padding:32px;min-height:200px}
-    .project-media{width:100%;border-radius:8px;margin-bottom:16px;border:1px solid var(--border);max-height:250px;object-fit:cover}
+    .project-media{width:100%;border-radius:8px;margin-bottom:16px;border:1px solid var(--border);max-height:250px;object-fit:cover;cursor:pointer;transition:transform 0.2s ease}
+    .project-media:hover{transform:scale(1.02)}
+    .lightbox{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.9);justify-content:center;align-items:center}
+    .lightbox.active{display:flex}
+    .lightbox-content{max-width:90%;max-height:90%;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+    .lightbox-close{position:absolute;top:20px;right:35px;color:#f1f1f1;font-size:40px;font-weight:bold;cursor:pointer;transition:color 0.2s ease}
+    .lightbox-close:hover{color:#ccc}
     @media(max-width:900px){.grid.cols-2-large,.grid.cols-2{grid-template-columns:1fr}}
     @media(max-width:900px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}}
     .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow:0 8px 24px rgba(0,0,0,0.4);transition:all 0.2s ease}
@@ -84,7 +90,7 @@
   </header>
 
   <section id="about" class="container section">
-    <div class="grid cols-2">
+    <div class="grid cols-2" style="gap: 16px;">
       <div class="card">
         <h2>Who I Am</h2>
         <p>Master of Science in Computer Science (2024–2026) at the University of Arizona with a 4.0 GPA. Previously earned my BS in Computer Science from LUMS (3.89 GPA). Awards include Dean's Honor List, Merit Scholarship, and NMF Gold Medal for Sportsperson of the Year.</p>
@@ -103,15 +109,15 @@
     <div class="grid cols-2-large" style="margin-bottom: 32px;">
       <article class="card proj agent-card">
         <div class="row"><span class="tag">AI Agent</span></div>
-        <img src="/assets/gifs/workout.gif" alt="AI-Powered Workout Trainer Demo" class="project-media">
+        <img src="/assets/gifs/workout.gif" alt="AI-Powered Workout Trainer Demo" class="project-media" title="Click to view larger">
         <h3>AI-Powered Workout Trainer</h3>
         <p>Full-stack web application generating personalized workout plans using Google's Gemini API and LangGraph workflow orchestration. Features intelligent adaptation based on user feedback, RPE monitoring, and calendar integration. Built by a former university swimming team captain with 10+ years of gym experience.</p>
-        <p><strong>Tech Stack:</strong> FastAPI, React, Tailwind CSS, SQLite, LangChain, JWT authentication</p>
+        <p><strong>Tech Stack:</strong> LangGraph/LangChain, Gemini, JavaScript, FastAPI, React, Tailwind CSS, SQLite, JWT authentication</p>
         <p><a href="https://github.com/A-Shamail/Workouts_App" target="_blank">GitHub</a></p>
       </article>
       <article class="card proj agent-card">
         <div class="row"><span class="tag">AI Agent</span></div>
-        <img src="/assets/gifs/agent-2-placeholder.gif" alt="AI Agent 2 Demo" class="project-media">
+        <img src="/assets/gifs/agent-2-placeholder.gif" alt="AI Agent 2 Demo" class="project-media" title="Click to view larger">
         <h3>AI Agent Project 2</h3>
         <p>Sophisticated multi-modal AI agent for complex task automation. Details coming soon.</p>
         <p><a href="#" target="_blank">Coming Soon</a></p>
@@ -130,7 +136,7 @@
     <div class="grid cols-2">
       <article class="card proj">
         <div class="row"><span class="tag">Game Dev</span></div>
-        <img src="/assets/pokemon.png" alt="Pokemon Game Screenshot" class="project-media">
+        <img src="/assets/pokemon.png" alt="Pokemon Game Screenshot" class="project-media" title="Click to view larger">
         <h3>Turn-Based Pokemon Game</h3>
         <p>A 2D Unity game with custom UI and audio, set in my undergraduate campus. Built with C# scripts.</p>
         <p><a href="https://github.com/A-Shamail/Pokemon-Game" target="_blank">GitHub</a></p>
@@ -155,9 +161,54 @@
     </div>
   </section>
 
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" class="lightbox-content" src="" alt="">
+  </div>
+
   <footer class="footer container">
     <div>© <span id="y"></span> Ahmad Shamail. Built with plain HTML/CSS. Hosted on GitHub Pages.</div>
   </footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    
+    // Lightbox functionality
+    function openLightbox(src, alt) {
+      document.getElementById('lightbox').classList.add('active');
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-img').alt = alt;
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Close lightbox when clicking outside the image
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeLightbox();
+      }
+    });
+    
+    // Close lightbox with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+    
+    // Add click handlers to all project images
+    document.addEventListener('DOMContentLoaded', function() {
+      const projectImages = document.querySelectorAll('.project-media');
+      projectImages.forEach(img => {
+        img.addEventListener('click', function() {
+          openLightbox(this.src, this.alt);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
